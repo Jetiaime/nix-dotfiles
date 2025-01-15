@@ -2,6 +2,11 @@
   description = "TeAmo's Nix Darwin Configuration";
 
   inputs = {
+
+    #########################################################
+    #                     Core Systems                      #
+    #########################################################
+
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
 
@@ -23,6 +28,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    #########################################################
+    #                     Core Libs                         #
+    #########################################################
+
+    # Deployment
+    deploy-rs.url = "github:serokell/deploy-rs";
+
     # Snowfall Lib
     snowfall-lib = {
       url = "github:snowfallorg/lib";
@@ -34,6 +46,10 @@
       url = "github:snowfallorg/flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    #########################################################
+    #                     Applications                      #
+    #########################################################
 
     # WezTerm
     wezterm.url = "github:wez/wezterm?dir=nix";
@@ -56,7 +72,7 @@
         };
       };
     };
-  in lib.mkFlake {
+  in with lib; mkFlake {
     channels-config = {
       allowUnfree = true;
       permittedInsecurePackages = [];
@@ -65,6 +81,22 @@
 
     overlays = [];
 
-    systems = {};
+    systems = {
+      modules = {
+        nixos = with inputs; [
+          home-manager.nixosModules.home-manager
+        ];
+
+        darwin = with inputs; [
+          home-manager.darwinModules.home-manager
+        ];
+      };
+
+      hosts = {};
+    };
+
+    deploy = mkDeploy {
+      inherit inputs;
+    };
   };
 }

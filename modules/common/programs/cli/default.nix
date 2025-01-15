@@ -25,11 +25,11 @@ in {
       git         # Git
       jq          # jq is a lightweight and flexible command-line JSON processor
       lsof        # List open files
-      nixd
-      nil
-      unzip
-      wget
-      vim
+      nixd        # Nix development tool
+      nil         # Nix Language Server
+      unzip       # Unzip
+      wget        # Wget
+      vim         # Vim
     ];
   };
 }

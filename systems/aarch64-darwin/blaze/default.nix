@@ -6,6 +6,12 @@
   inherit (lib.${namespace}) enabled;
 in {
   ${namespace} = {
+    user = {
+      name = "teamo";
+      email = "1157757077@qq.com";
+      fullName = "Te Amo";
+    };
+
     system = {
       enable = true;
       stateVersion = 5;
