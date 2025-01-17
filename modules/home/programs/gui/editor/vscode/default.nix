@@ -10,7 +10,7 @@
 
   cfg = config.${namespace}.programs.gui.editor.vscode;
 in {
-  options.programs.gui.editor.vscode = {
+  options.${namespace}.programs.gui.editor.vscode = {
     enable = mkBoolOpt false "Whether or not to enable vscode.";
   };
 

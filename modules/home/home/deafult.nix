@@ -15,13 +15,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    assertions = [
-      {
-        assertion = cfg.stateVersion != "";
-        message = "The state version of the home configuration is required.";
-      }
-    ];
-
     programs.home-manager = enabled;
     home.stateVersion = cfg.stateVersion;
   };

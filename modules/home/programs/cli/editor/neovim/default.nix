@@ -6,12 +6,12 @@
   ...
 }: let 
   inherit (lib) mkIf;
-  inherit (lib.${namespace}) mkBoolOption;
+  inherit (lib.${namespace}) mkBoolOpt;
 
   cfg = config.${namespace}.programs.cli.editor.neovim;
 in {
   options.${namespace}.programs.cli.editor.neovim = {
-    enable = mkBoolOption "Whether to enable neovim";
+    enable = mkBoolOpt false "Whether to enable neovim";
   };
 
   config = mkIf cfg.enable {

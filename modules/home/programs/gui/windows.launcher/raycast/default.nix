@@ -10,7 +10,7 @@
 
   cfg = config.${namespace}.programs.gui.windows.launcher.raycast;
 in {
-  options.programs.gui.windows.launcher.raycast = {
+  options.${namespace}.programs.gui.windows.launcher.raycast = {
     enable = mkBoolOpt false "Whether or not enable raycast.";
   };
 

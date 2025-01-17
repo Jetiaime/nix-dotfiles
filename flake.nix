@@ -84,11 +84,9 @@
     systems = {
       modules = {
         nixos = with inputs; [
-          home-manager.nixosModules.home-manager
         ];
 
         darwin = with inputs; [
-          home-manager.darwinModules.home-manager
         ];
       };
 
