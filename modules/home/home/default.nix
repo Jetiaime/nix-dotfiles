@@ -19,3 +19,4 @@ in {
     home.stateVersion = cfg.stateVersion;
   };
 }
+
