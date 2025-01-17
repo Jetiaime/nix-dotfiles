@@ -6,15 +6,14 @@
   inherit (lib.${namespace}) enabled;
 in {
   teamo = {
-    # home = {
-    #   enable = true;
-    #   stateVersion = "24.11";
-    # };
+    home = {
+      enable = true;
+      stateVersion = "24.11";
+    };
 
     user = {
       enable = true;
       email = "1157757077@qq.com";
-      stateVersion = "24.11";
     };
 
     programs = {
@@ -37,8 +36,23 @@ in {
           vscode = enabled;
         };
 
-        terminal.wezterm = enabled;
-        windows.launcher.raycast = enabled;
+        ide = {
+          idea = enabled;
+          pycharm = enabled;  
+        };
+
+        terminal = {
+          # ghostty = enabled;
+          wezterm = enabled;
+        };
+
+        windows = {
+          launcher.raycast = enabled;
+          manager.yabai = {
+            enable = true;
+            skhdEnable = true;
+          };
+        };
       };
     };
   };

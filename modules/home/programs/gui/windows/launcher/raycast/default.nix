@@ -8,6 +8,7 @@
   inherit (lib) mkIf;
   inherit (lib.${namespace}) mkBoolOpt;
 
+  
   cfg = config.${namespace}.programs.gui.windows.launcher.raycast;
 in {
   options.${namespace}.programs.gui.windows.launcher.raycast = {

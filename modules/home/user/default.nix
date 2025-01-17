@@ -6,7 +6,7 @@
   ...
 }: let
   inherit (lib) mkIf;
-  inherit (lib.${namespace}) mkStrOpt mkBoolOpt enabled;
+  inherit (lib.${namespace}) mkStrOpt mkBoolOpt;
   inherit (lib.snowfall.system) is-darwin;
 
   cfg = config.${namespace}.user;
@@ -20,11 +20,9 @@ in {
       then "/Users/${cfg.name}"
       else "/home/${cfg.name}"
     ) "The home directory of the user.";
-    stateVersion = mkStrOpt "" "The state version of the home configuration.";
   };
 
   config = mkIf cfg.enable {
-
     assertions = [
       {
         assertion = cfg.name != "";
@@ -34,19 +32,11 @@ in {
         assertion = cfg.home != "";
         message = "home is required";
       }
-      {
-        assertion = cfg.stateVersion != "";
-        message = "stateVersion is required";
-      }
     ];
     
-    # put it here for now, because it doesn't work in `home/default.nix`.
-    programs.home-manager = enabled;
-
     home = {
       username = cfg.name;
       homeDirectory = cfg.home;
-      stateVersion = cfg.stateVersion;
     };
   };
 }
