@@ -10,11 +10,10 @@
   cfg = config.${namespace}.programs.gui.browser.zen;
 in {
   options.${namespace}.programs.gui.browser.zen = {
-    enabled = mkBoolOpt false "Whether to enable Browser Zen.";
+    enable = mkBoolOpt false "Whether to enable Zen Browser.";
   };
 
-  config = mkIf cfg.enabled {
+  config = mkIf cfg.enable {
     homebrew.casks = [ "zen-browser" ];
   };
 }
-

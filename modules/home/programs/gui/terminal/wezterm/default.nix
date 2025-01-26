@@ -22,6 +22,11 @@ in {
       enableBashIntegration = true;
       package = inputs.wezterm.packages.${system}.default;
     };
+
+    home.file.".config/wezterm" = {
+      source = ./extraConfig;
+      recursive = true;
+    };
   };
 }
 

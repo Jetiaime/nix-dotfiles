@@ -31,6 +31,10 @@ in {
       };
 
       gui = {
+        browser = {
+          chrome = enabled;
+        };
+
         editor = {
           obsidian = enabled;
           vscode = enabled;
@@ -39,6 +43,10 @@ in {
         ide = {
           idea = enabled;
           pycharm = enabled;  
+        };
+
+        network = {
+          vpn.zerotierone = enabled;
         };
 
         terminal = {

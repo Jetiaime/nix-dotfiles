@@ -7,9 +7,9 @@
   inherit (lib) mkIf;
   inherit (lib.${namespace}) mkBoolOpt;
 
-  cfg = config.${namespace}.programs.gui.network.clash-verge-rev;
+  cfg = config.${namespace}.programs.gui.network.vpn.clash-verge-rev;
 in {
-  options.${namespace}.programs.gui.network.clash-verge-rev = {
+  options.${namespace}.programs.gui.network.vpn.clash-verge-rev = {
     enable = mkBoolOpt false "Whether or not enable clash-verge-rev configuration.";
   };
 

@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   namespace,
   ...
 }: let
@@ -14,7 +15,15 @@ in {
 
     system = {
       enable = true;
-      stateVersion = 5;
+      fonts = {
+        enable = true;
+        packages = with pkgs; [
+          (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+        ];
+      };
+
+      ui = enabled;
+      physical = enabled;      
 
       package-manager = {
         nix = enabled;
@@ -23,6 +32,8 @@ in {
           masEnable = true;
         };
       };
+
+      stateVersion = 5;
     };
     
     programs = {
@@ -32,12 +43,16 @@ in {
       };
 
       gui = {
-        network = {
-          zerotier-one = enabled;
-          clash-verge-rev = enabled;
+        browser.zen = enabled;
+        editor.cursor = enabled;
+        manager.task = {
+          super-productivity = enabled;
+          ticktick = enabled;
         };
-        
+        music.netease = enabled;
+        network.vpn.clash-verge-rev = enabled;
         version-control.github = enabled;
+        vm.orbstack = enabled;
       };
     };
   };

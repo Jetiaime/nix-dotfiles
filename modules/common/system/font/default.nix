@@ -14,7 +14,7 @@ in {
   options.${namespace}.system.fonts = with types; {
     enable = mkBoolOpt false "Whether or not to manage fonts.";
 
-    fonts = with pkgs; mkOpt (listOf package) [
+    packages = with pkgs; mkOpt (listOf package) [
       # Desktop Fonts
       corefonts    # MS fonts
       b612         # high legibility
@@ -31,10 +31,13 @@ in {
       twemoji-color-font
 
       # Nerd Fonts
-      nerd-fonts.caskaydia-cove
-      nerd-fonts.iosevka
-      nerd-fonts.monaspace
-      nerd-fonts.symbols-only
+      nerdfonts.caskaydia-cove
+      nerdfonts.iosevka
+      nerdfonts.monaspace
+      nerdfonts.symbols-only
+      (nerdfonts.override {
+        fonts = [ "JetBrainsMono" ];
+      })
     ] "Custom font packages to install.";
 
     default = mkStrOpt "MonaspiceNe Nerd Font" "Default font name";

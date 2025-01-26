@@ -10,10 +10,10 @@
   cfg = config.${namespace}.programs.gui.editor.cursor;
 in {
   options.${namespace}.programs.gui.editor.cursor = {
-    enabled = mkBoolOpt false "Whether to enable Cursor.";
+    enable = mkBoolOpt false "Whether to enable Cursor.";
   };
 
-  config = mkIf cfg.enabled {
+  config = mkIf cfg.enable {
     homebrew.casks = [ "cursor" ];
   };
 }
