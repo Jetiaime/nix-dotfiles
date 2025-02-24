@@ -8,6 +8,7 @@
   inherit (lib) mkIf mkEnableOption;
 
   cfg = config.${namespace}.system.ui;
+  username = config.${namespace}.user.name;
 in {
   options.${namespace}.system.ui = {
     enable = mkEnableOption "Whether to enable MacOS UI."; 
@@ -58,22 +59,14 @@ in {
         persistent-apps = [
           "/System/Applications/Launchpad.app"
           "/System/Applications/Calendar.app"
-          # {
-          #   spacer = {
-          #     small = true;
-          #   };
-          # }
           "/Applications/TickTick.app"
           "/Applications/Super Productivity.app"
-          # "~/Applications/Home\ Manager\ Apps/WezTerm.app"
-          "/nix/store/harnalxspcysn96xgv56rx96vnqwg3xi-wezterm/Applications/WezTerm.app"
-          # "~/Applications/Home Manager Apps/Applications/Obsidian.app"
-          "/nix/store/vlag9ljc09lq1h4p7lmrihdn51lzy33z-obsidian-1.7.6/Applications/Obsidian.app"
+          "/Users/${username}/Applications/Home Manager Apps/WezTerm.app"
+          "/Users/${username}/Applications/Home Manager Apps/Obsidian.app"
           "/Applications/OrbStack.app"
-          # "~/Applications/Home Manager Apps/IntelliJ IDEA Ultimate.app"
-          "/nix/store/xlwpx2g2vqkprnr3nzj7y76lnb1sdq3c-idea-ultimate-2024.3.1.1/Applications/IntelliJ IDEA.app"
-          # "~/Applications/Home Manager Apps/PyCharm.app"
-          "/nix/store/q50m0w92sy09fvv2fv95m6ks6vyzliii-pycharm-professional-2024.3.1.1/Applications/PyCharm.app"
+          "/Users/${username}/Applications/Home Manager Apps/Visual Studio Code.app"
+          "/Users/${username}/Applications/Home Manager Apps/IntelliJ IDEA.app"
+          "/Users/${username}/Applications/Home Manager Apps/PyCharm.app"
           "/Applications/Cursor.app"
           "/Applications/Zen Browser.app"
           "/System/Applications/Music.app"
@@ -81,7 +74,8 @@ in {
         ];
 
         persistent-others = [
-          "~/Downloads"
+          "/Users/${username}/Data/90_Tmp"
+          "/Users/${username}/Downloads"
         ];
       };
 
@@ -99,7 +93,7 @@ in {
         type = "png";
       };
 
-      # spaces.spans-displays = !config.services.yabai.enable;
+      spaces.spans-displays = !config.services.yabai.enable;
 
       NSGlobalDomain = {
         "com.apple.sound.beep.feedback" = 0;

@@ -30,6 +30,7 @@ in {
       unzip       # Unzip
       wget        # Wget
       vim         # Vim
+      direnv       # environment variables based on .envrc files
     ];
   };
 }
