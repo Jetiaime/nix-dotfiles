@@ -1,0 +1,18 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+add_newline = true
+
+[character]
+success_symbol = '[➜](bold green)'
+
+[os]
+disabled = false
+symbols.Macos = " "
+
+[sudo]
+disabled = false
+
+[time]
+disabled = false
+
+[username]
+show_always = true
