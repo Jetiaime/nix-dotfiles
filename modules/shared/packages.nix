@@ -3,7 +3,7 @@
   ...
 }: with pkgs; [
   # C
-  chezmoi            # 配置管理工具
+  # chezmoi            # 配置管理工具
 
   # F
   flameshot          # 截图工具

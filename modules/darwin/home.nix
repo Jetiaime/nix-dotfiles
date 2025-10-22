@@ -43,6 +43,10 @@
 
         # 管理的配置文件
         file = {
+          # Starship 提示符配置
+          ".config/starship.toml".source = config.lib.file.mkOutOfStoreSymlink "/etc/nix-darwin/resources/starship/starship.toml";
+
+          # WezTerm 终端模拟器配置
           ".config/wezterm" = {
             source = config.lib.file.mkOutOfStoreSymlink "/etc/nix-darwin/resources/wezterm";
             recursive = true;
@@ -51,10 +55,10 @@
       };
       
       # 合并对应的 programs
-      programs = {} // (import ../shared/programs.nix { inherit user pkgs config; });
+      programs = {} // (import ../shared/home-programs.nix { inherit user pkgs config; });
       
       # 合并对应的 services
-      # services = {} // (import ../shared/services.nix { inherit user pkgs config; });
+      # services = {} // (import ../shared/home-services.nix { inherit user pkgs config; });
 
       # 禁用 Home Manager 自动生成和安装 man 手册页
       manual.manpages.enable = false;

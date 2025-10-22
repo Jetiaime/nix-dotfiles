@@ -189,7 +189,34 @@ local key_tables = {
     },
 }
 
-local mouse_bindings = {}
+--------------------------------
+--            MOUSE           --
+--------------------------------
+local mouse_bindings = {
+    -- 双击 Tab 栏重命名
+    {
+        event = { Down = { streak = 2, button = 'Left' } },
+        mods = 'CTRL',
+        action = wezterm.action_callback(function(window, pane)
+            -- 弹出输入框
+            window:perform_action(
+                act.PromptInputLine {
+                    description = wezterm.format {
+                        { Attribute = { Intensity = 'Bold' } },
+                        { Foreground = { AnsiColor = 'Fuchsia' } },
+                        { Text = '重命名 Tab:' },
+                    },
+                    action = wezterm.action_callback(function(win, p, line)
+                        if line and #line > 0 then
+                            win:active_tab():set_title(line)
+                        end
+                    end),
+                },
+                pane
+            )
+        end),
+    },
+}
 
 return {
     disable_default_key_bindings = true,
