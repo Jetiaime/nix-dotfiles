@@ -18,6 +18,7 @@ _: [
 
   # T
   "tencent-lemon"      # 腾讯柠檬清理器
+  "tencent-meeting"    # 腾讯会议
   "ticktick"           # 滴答清单
 
   # Z

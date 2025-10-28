@@ -51,6 +51,9 @@
             source = config.lib.file.mkOutOfStoreSymlink "/etc/nix-darwin/resources/wezterm";
             recursive = true;
           };
+
+          # Lima 虚拟机配置
+          ".lima/kind-arm64.yaml".source = config.lib.file.mkOutOfStoreSymlink "/etc/nix-darwin/resources/lima/kind-arm64.yaml";
         };
       };
       
@@ -58,7 +61,7 @@
       programs = {} // (import ../shared/home-programs.nix { inherit user pkgs config; });
       
       # 合并对应的 services
-      # services = {} // (import ../shared/home-services.nix { inherit user pkgs config; });
+      services = {} // (import ../shared/home-services.nix { inherit user pkgs config; });
 
       # 禁用 Home Manager 自动生成和安装 man 手册页
       manual.manpages.enable = false;
@@ -69,5 +72,6 @@
   homebrew = {
     enable = true;
     casks = pkgs.callPackage ./casks.nix {};
+    brews = pkgs.callPackage ./brews.nix {};
   };
 }
