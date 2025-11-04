@@ -3,6 +3,12 @@
   pkgs,
   ...
 }: {
+  # Claude
+  claude-code = {
+    enable = true;
+    package = pkgs.claude-code;
+  };
+
   # Git 配置
   git = {
     enable = true;

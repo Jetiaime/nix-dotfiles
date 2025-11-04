@@ -15,7 +15,10 @@
     };
 
     home-manager.url = "github:nix-community/home-manager/master";
-
+    
+    # 添加 flake-utils 简化多系统支持
+    flake-utils.url = "github:numtide/flake-utils";
+    
     ###################################################
     #                 Homebrew Inputs                 #
     ###################################################
@@ -32,8 +35,8 @@
       flake = false;
     };
   };
-
-  outputs = inputs@{ self, nixpkgs, darwin, home-manager, nix-homebrew, homebrew-core, homebrew-cask, ... }:
+  
+  outputs = inputs@{ self, nixpkgs, darwin, home-manager, nix-homebrew, homebrew-core, homebrew-cask, flake-utils, ... }:
     let 
       user = "liu";
       darwinSystems = [ "aarch64-darwin" ];
@@ -49,15 +52,12 @@
             {
               nix-homebrew = {
                 inherit user;
-
                 enable = true;
-                # 开启 Rosetta 2 支持
                 enableRosetta = true;
                 taps = {
                   "homebrew/homebrew-core" = homebrew-core;
                   "homebrew/homebrew-cask" = homebrew-cask;
                 };
-                # 是否可以修改 Homebrew 的 taps
                 mutableTaps = false;
                 autoMigrate = true;
               };
@@ -75,15 +75,12 @@
             {
               nix-homebrew = {
                 inherit user;
-
                 enable = true;
-                # 开启 Rosetta 2 支持
                 enableRosetta = true;
                 taps = {
                   "homebrew/homebrew-core" = homebrew-core;
                   "homebrew/homebrew-cask" = homebrew-cask;
                 };
-                # 是否可以修改 Homebrew 的 taps
                 mutableTaps = false;
                 autoMigrate = true;
               };
