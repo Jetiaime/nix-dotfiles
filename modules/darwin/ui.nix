@@ -51,7 +51,7 @@
         "${config.users.users.${user}.home}/Applications/Home Manager Apps/WezTerm.app"
         "${config.users.users.${user}.home}/Applications/Home Manager Apps/Obsidian.app"
         "${config.users.users.${user}.home}/Applications/Home Manager Apps/Visual Studio Code.app"
-        "${config.users.users.${user}.home}/Applications/IntelliJ IDEA Ultimate.app"
+        "${config.users.users.${user}.home}/Applications/IntelliJ IDEA.app"
         "${config.users.users.${user}.home}/Applications/GoLand.app"
         "/Applications/Zen.app"
         "/Applications/Spotify.app"

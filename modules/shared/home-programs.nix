@@ -9,12 +9,18 @@
     package = pkgs.claude-code;
   };
 
+  direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+    package = pkgs.direnv;
+  };
+
   # Git 配置
   git = {
     enable = true;
     package = pkgs.git;
     userName = "TeAmo";
-    userEmail = "1157757077@qq.com";
+    userEmail = "liu.junhui3@iwhalecloud.com";
     ignores = [
       ".DS_Store"
       "*.swp"
