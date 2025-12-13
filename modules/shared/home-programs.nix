@@ -19,8 +19,8 @@
   git = {
     enable = true;
     package = pkgs.git;
-    userName = "TeAmo";
-    userEmail = "liu.junhui3@iwhalecloud.com";
+    settings.user.name = "TeAmo";
+    settings.user.email = "liu.junhui3@iwhalecloud.com";
     ignores = [
       ".DS_Store"
       "*.swp"

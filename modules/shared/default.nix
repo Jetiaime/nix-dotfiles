@@ -11,8 +11,8 @@
     substituters = [
       "https://nix-community.cachix.org"
       "https://cache.nixos.org"
-      "https://mirror.sjtu.edu.cn/nix-channels/store"
-      "https://mirrors.ustc.edu.cn/nix-channels/store"
+      # "https://mirror.sjtu.edu.cn/nix-channels/store"
+      # "https://mirrors.ustc.edu.cn/nix-channels/store"
     ];
 
     trusted-public-keys = [
