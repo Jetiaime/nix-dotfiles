@@ -21,6 +21,9 @@ _: [
   "tencent-meeting"    # 腾讯会议
   "ticktick"           # 滴答清单
 
+  # W
+  "windows-app"        # Windows 桌面控制软件
+
   # Z
   "zen"                # Zen 浏览器
 ]
