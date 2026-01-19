@@ -5,6 +5,9 @@ _: [
   # D
   "dingtalk"           # 钉钉
 
+  # N
+  "neteasemusic"       # 网易云
+
   # M
   "microsoft-excel"    # Excel
   "microsoft-powerpoint"      # PPT
