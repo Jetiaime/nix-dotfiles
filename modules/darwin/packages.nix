@@ -5,6 +5,9 @@
 let 
   shared = import ../shared/packages.nix { inherit pkgs; };
 in shared ++ [
+  # C
+  colima      # Colima
+
   # R
   raycast     # App 启动器
 

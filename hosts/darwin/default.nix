@@ -12,13 +12,19 @@
   ];
 
   # 系统软件包
-  environment.systemPackages = with pkgs; [
-    vim                # 文本编辑器
-    htop               # 交互式进程查看器
-    wget               # 文件下载工具
-    git                # 版本控制系统
-    unzip              # 解压工具
-  ];
+  environment = {
+    systemPackages = with pkgs; [
+      vim                # 文本编辑器
+      htop               # 交互式进程查看器
+      wget               # 文件下载工具
+      git                # 版本控制系统
+      unzip              # 解压工具
+    ];
+
+    variables = {
+      KIND_EXPERIMENTAL_PROVIDER = "nerdctl";
+    };
+  };
 
   # 设置当前 MacOS 架构为 ARM
   nixpkgs.hostPlatform = "aarch64-darwin";

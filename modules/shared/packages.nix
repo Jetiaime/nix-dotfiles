@@ -18,6 +18,8 @@
   jetbrains-mono     # Monospace 字体  
 
   # K
+  kind               # Kind 
+  kubevela           # OAM 实现
   kubectl            # Kubernetes 命令行工具
   k9s                # k8s 终端工具
 
