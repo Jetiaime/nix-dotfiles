@@ -23,6 +23,7 @@
 
     variables = {
       KIND_EXPERIMENTAL_PROVIDER = "nerdctl";
+      PATH = "$HOME/.rd/bin:$PATH";
     };
   };
 
