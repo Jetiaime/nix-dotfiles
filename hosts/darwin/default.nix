@@ -24,6 +24,9 @@
     variables = {
       KIND_EXPERIMENTAL_PROVIDER = "nerdctl";
       PATH = "$HOME/.rd/bin:$PATH";
+      http_proxy="http://127.0.0.1:7897";
+      all_proxy="socks5://127.0.0.1:7897";
+      https_proxy="http://127.0.0.1:7897";
     };
   };
 
