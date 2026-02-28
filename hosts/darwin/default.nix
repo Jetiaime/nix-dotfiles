@@ -24,9 +24,14 @@
     variables = {
       KIND_EXPERIMENTAL_PROVIDER = "nerdctl";
       PATH = "$HOME/.rd/bin:$PATH";
-      http_proxy="http://127.0.0.1:7897";
-      all_proxy="socks5://127.0.0.1:7897";
-      https_proxy="http://127.0.0.1:7897";
+      http_proxy = "http://127.0.0.1:7897";
+      all_proxy = "socks5://127.0.0.1:7897";
+      https_proxy = "http://127.0.0.1:7897";
+      # Homebrew 国内镜像源（USTC）
+      HOMEBREW_API_DOMAIN = "https://mirrors.ustc.edu.cn/homebrew-bottles/api";
+      HOMEBREW_BOTTLE_DOMAIN = "https://mirrors.ustc.edu.cn/homebrew-bottles";
+      HOMEBREW_BREW_GIT_REMOTE = "https://mirrors.ustc.edu.cn/brew.git";
+      HOMEBREW_CORE_GIT_REMOTE = "https://mirrors.ustc.edu.cn/homebrew-core.git";
     };
   };
 

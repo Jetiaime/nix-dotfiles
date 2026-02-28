@@ -48,9 +48,10 @@
       persistent-apps = [
         "/System/Applications/Calendar.app"
         "/Applications/TickTick.app"
-        "${config.users.users.${user}.home}/Applications/Home Manager Apps/WezTerm.app"
-        "${config.users.users.${user}.home}/Applications/Home Manager Apps/Obsidian.app"
-        "${config.users.users.${user}.home}/Applications/Home Manager Apps/Visual Studio Code.app"
+        "/Applications/WezTerm.app"
+        "/Applications/Obsidian.app"
+        "/Applications/Visual Studio Code.app"
+        "/Applications/Zed.app"
         "${config.users.users.${user}.home}/Applications/IntelliJ IDEA.app"
         "${config.users.users.${user}.home}/Applications/GoLand.app"
         "/Applications/Zen.app"

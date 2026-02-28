@@ -28,12 +28,6 @@
     lfs.enable = true;
   };
 
-  # Obsidian 配置
-  obsidian = {
-    enable = true;
-    package = pkgs.obsidian;
-  };
-
   # SSH 配置
   ssh = {
     enable = true;
@@ -46,20 +40,6 @@
     package = pkgs.starship;
     enableInteractive = true;
     enableZshIntegration = true;
-  };
-
-  # VSCode 配置
-  vscode = {
-    enable = true;
-    package = pkgs.vscode;
-  };
-
-  # WezTerm 终端模拟器配置
-  wezterm = {
-    enable = true;
-    package = pkgs.wezterm;
-    enableZshIntegration = true;
-    enableBashIntegration = true;
   };
 
   # 启动 zsh
