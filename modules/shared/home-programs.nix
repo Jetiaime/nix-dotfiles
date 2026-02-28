@@ -32,6 +32,7 @@
   ssh = {
     enable = true;
     package = pkgs.openssh;
+    enableDefaultConfig = false;
   };
 
   # Startship 提示符配置
