@@ -2,11 +2,22 @@
   user,
   pkgs,
   ...
-}: {
+}:
+{
   # Claude
   claude-code = {
     enable = true;
     package = pkgs.claude-code;
+  };
+
+  # OpenCode
+  opencode = {
+    enable = true;
+    settings = {
+      model = "anthropic/claude-sonnet-4-20250514";
+      autoshare = false;
+      autoupdate = true;
+    };
   };
 
   direnv = {
@@ -45,13 +56,14 @@
 
   # 启动 zsh
   zsh = {
-    enable = true;                      # 启动 zsh
-    enableCompletion = true;            # 启动补全
-    package = pkgs.zsh;                 # 使用 pkgs 的 zsh 包
+    enable = true; # 启动 zsh
+    enableCompletion = true; # 启动补全
+    package = pkgs.zsh; # 使用 pkgs 的 zsh 包
     shellAliases = {
       ll = "ls -la";
       ",data" = "cd ~/Data";
-      ",vpn" = "export https_proxy=http://127.0.0.1:7897 http_proxy=http://127.0.0.1:7897 all_proxy=socks5://127.0.0.1:7897";
+      ",vpn" =
+        "export https_proxy=http://127.0.0.1:7897 http_proxy=http://127.0.0.1:7897 all_proxy=socks5://127.0.0.1:7897";
       ",ssh_au" = "ssh -o HostKeyAlgorithms=+ssh-rsa 0027026800@10.20.50.1";
     };
   };

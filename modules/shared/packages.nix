@@ -1,42 +1,46 @@
 {
   pkgs,
   ...
-}: with pkgs; [
+}:
+with pkgs;
+[
   # C
   # chezmoi            # 配置管理工具
-  cargo                # Rust 包管理器
-  clippy               # Rust 代码检查工具
+  cargo # Rust 包管理器
+  clippy # Rust 代码检查工具
 
   # D
-  docker-client      # Docker 客户端
+  docker-client # Docker 客户端
 
   # F
-  flameshot          # 截图工具
+  flameshot # 截图工具
 
   # J
-  jetbrains-toolbox  # JetBrains 工具箱
-  jetbrains-mono     # Monospace 字体  
+  jetbrains-toolbox # JetBrains 工具箱
+  jetbrains-mono # Monospace 字体
 
   # K
-  kind               # Kind 
-  kubevela           # OAM 实现
-  kubectl            # Kubernetes 命令行工具
-  k9s                # k8s 终端工具
+  kind # Kind
+  kubevela # OAM 实现
+  kubectl # Kubernetes 命令行工具
+  k9s # k8s 终端工具
 
   # N
-  nerd-fonts.jetbrains-mono    # Nerd Font 字体
+  nerd-fonts.jetbrains-mono # Nerd Font 字体
+  nil # Nix Language Server
+  alejandra # Nix 代码格式化工具
 
   # Q
-  qemu               # QEMU 虚拟机
+  qemu # QEMU 虚拟机
 
   # R
-  rustc              # Rust 编译器
-  rustfmt            # Rust 代码格式化工具
-  rust-analyzer      # Rust 语言服务器
+  rustc # Rust 编译器
+  rustfmt # Rust 代码格式化工具
+  rust-analyzer # Rust 语言服务器
 
   # U
-  unar               # 解压工具
+  unar # 解压工具
 
   # Z
-  zimfw              # Zsh 插件管理器
+  zimfw # Zsh 插件管理器
 ]
