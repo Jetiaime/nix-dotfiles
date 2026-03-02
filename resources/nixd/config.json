@@ -1,0 +1,12 @@
+{
+  "nixd": {
+    "formatting": {
+      "command": ["alejandra"]
+    },
+    "options": {
+      "enable": true,
+      "package": "nixpkgs",
+      "attributes": ["options.nixosOptions", "home-manager.options"]
+    }
+  }
+}
