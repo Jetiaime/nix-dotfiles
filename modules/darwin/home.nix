@@ -13,7 +13,7 @@
     isHidden = false;
     shell = pkgs.zsh;
   };
-  
+
   # home-manager 配置
   home-manager = {
     useGlobalPkgs = true;
@@ -22,7 +22,7 @@
         enableNixpkgsReleaseCheck = false;
         packages = pkgs.callPackage ./packages.nix {};
         stateVersion = "25.05";
-        
+
         # 设置壁纸
         activation.setWallpaper = config.lib.dag.entryAfter ["writeBoundary"] ''
           $DRY_RUN_CMD /usr/bin/osascript << EOF
@@ -56,10 +56,35 @@
           ".lima/kind-arm64.yaml".source = config.lib.file.mkOutOfStoreSymlink "/etc/nix-darwin/resources/lima/kind-arm64.yaml";
         };
       };
-      
+
       # 合并对应的 programs
       programs = {} // (import ../shared/home-programs.nix { inherit user pkgs config; });
-      
+
+      xdg.configFile."Code/User/settings.json".text = ''
+        {
+          "[nix]": {
+            "editor.defaultFormatter": "jnoortheen.nix-ide",
+            "editor.tabSize": 2
+          },
+          "nix.server": "${pkgs.nil}/bin/nil"
+        }
+      '';
+
+      xdg.configFile."zed/settings.json".text = ''
+        {
+          "languages": {
+            "Nix": {
+              "language_servers": ["nil"]
+            }
+          },
+          "language_servers": {
+            "nil": {
+              "path": "${pkgs.nil}/bin/nil"
+            }
+          }
+        }
+      '';
+
       # 合并对应的 services
       services = {} // (import ../shared/home-services.nix { inherit user pkgs config; });
 
@@ -67,7 +92,7 @@
       manual.manpages.enable = false;
     };
   };
-  
+
   # homebrew 配置
   homebrew = {
     enable = true;
