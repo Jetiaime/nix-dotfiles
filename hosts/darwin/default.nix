@@ -1,10 +1,10 @@
 {
   user,
   pkgs,
-  config,
   openspec,
   ...
-}: {
+}:
+{
   imports = [
     ../../modules/shared
     ../../modules/darwin/ui.nix
@@ -15,12 +15,12 @@
   # 系统软件包
   environment = {
     systemPackages = with pkgs; [
-      vim                # 文本编辑器
-      htop               # 交互式进程查看器
-      wget               # 文件下载工具
-      git                # 版本控制系统
-      unzip              # 解压工具
-      openspec.packages.${pkgs.system}.default  # Spec-driven development CLI
+      vim # 文本编辑器
+      htop # 交互式进程查看器
+      wget # 文件下载工具
+      git # 版本控制系统
+      unzip # 解压工具
+      openspec.packages.${pkgs.system}.default # Spec-driven development CLI
     ];
 
     variables = {
