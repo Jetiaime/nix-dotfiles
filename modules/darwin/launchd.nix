@@ -1,7 +1,8 @@
 {
   pkgs,
   ...
-}: {
+}:
+{
   launchd = {
     daemons.nix-daemon.serviceConfig.EnvironmentVariables = {
       http_proxy = "http://127.0.0.1:7897";
