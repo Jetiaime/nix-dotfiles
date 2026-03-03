@@ -5,12 +5,6 @@
 }:
 {
   # Claude
-  claude-code = {
-    enable = true;
-    package = pkgs.claude-code;
-  };
-
-  # OpenCode
   opencode = {
     enable = true;
     settings = {
