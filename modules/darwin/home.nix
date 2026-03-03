@@ -74,16 +74,7 @@
             ".lima/kind-arm64.yaml".source =
               config.lib.file.mkOutOfStoreSymlink "/etc/nix-darwin/resources/lima/kind-arm64.yaml";
 
-            # OpenCode 配置
-            ".config/opencode/opencode.json".source =
-              config.lib.file.mkOutOfStoreSymlink "/etc/nix-darwin/resources/opencode/opencode.json";
-
-            ".config/opencode/tui.json".source =
-              config.lib.file.mkOutOfStoreSymlink "/etc/nix-darwin/resources/opencode/tui.json";
-
-            # OhMyOpenCode 配置
-            ".config/opencode/oh-my-opencode.json".source =
-              config.lib.file.mkOutOfStoreSymlink "/etc/nix-darwin/resources/opencode/oh-my-opencode.json";
+            # OpenCode configuration is managed by home-manager module
           };
         };
 
