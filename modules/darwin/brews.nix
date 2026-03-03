@@ -7,7 +7,4 @@ _: [
 
   # L
   "lima" # Lima 虚拟机
-
-  # O
-  "opencode" # OpenCode AI 终端编码助手
 ]

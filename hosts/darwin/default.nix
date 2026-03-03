@@ -22,6 +22,7 @@
       unzip # 解压工具
       openspec.packages.${pkgs.system}.default # Spec-driven development CLI
       bun # Bun JS runtime
+      opencode # OpenCode AI 终端编码助手
     ];
 
     variables = {
