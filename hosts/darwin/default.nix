@@ -21,6 +21,7 @@
       git # 版本控制系统
       unzip # 解压工具
       openspec.packages.${pkgs.system}.default # Spec-driven development CLI
+      bun # Bun JS runtime
     ];
 
     variables = {
