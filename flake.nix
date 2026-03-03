@@ -69,6 +69,7 @@
             inherit system;
             specialArgs = inputs // {
               inherit user;
+              inherit (inputs) nix-openclaw;
             };
             modules = [
               home-manager.darwinModules.home-manager
@@ -95,6 +96,7 @@
             system = "aarch64-darwin";
             specialArgs = inputs // {
               inherit user;
+              inherit (inputs) nix-openclaw;
             };
             modules = [
               home-manager.darwinModules.home-manager
