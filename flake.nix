@@ -20,8 +20,10 @@
     flake-utils.url = "github:numtide/flake-utils";
 
     ###################################################
-    #               External Tool Inputs             #
+    #               External Tool Inputs              #
     ###################################################
+
+    nix-openclaw.url = "github:openclaw/nix-openclaw";
 
     openspec.url = "github:Fission-AI/OpenSpec";
 
