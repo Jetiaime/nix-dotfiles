@@ -2,6 +2,7 @@
   user,
   pkgs,
   openspec,
+  nix-openclaw,
   ...
 }:
 {
@@ -23,6 +24,7 @@
       openspec.packages.${pkgs.system}.default # Spec-driven development CLI
       bun # Bun JS runtime
       opencode # OpenCode AI 终端编码助手
+      nodejs_22 # NodeJS 22 for OpenClaw
     ];
 
     variables = {
