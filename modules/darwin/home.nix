@@ -1,6 +1,7 @@
 {
   pkgs,
   user,
+  nix-openclaw,
   ...
 }:
 {
@@ -23,6 +24,10 @@
         ...
       }:
       {
+        # Note: nix-openclaw module has compatibility issues with current nixpkgs
+        # For now, we'll install openclaw-gateway via nix-env instead
+        # The module requires pkgs.openclaw which isn't in nixpkgs yet
+
         home = {
           enableNixpkgsReleaseCheck = false;
           packages = pkgs.callPackage ./packages.nix { } ++ [
@@ -83,7 +88,8 @@
         };
 
         # 合并对应的 programs
-        programs = { } // (import ../shared/home-programs.nix { inherit user pkgs config; });
+        programs = 
+          (import ../shared/home-programs.nix { inherit user pkgs config; });
 
         xdg.configFile."Code/User/settings.json".text = ''
           {
