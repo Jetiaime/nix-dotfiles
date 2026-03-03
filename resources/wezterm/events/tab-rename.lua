@@ -1,1 +1,1 @@
-/nix/store/r35kf8vqllxw8dvgy17953q7a1wksg99-home-manager-files/.config/wezterm/events/tab-rename.lua
+/nix/store/4mdnijahr85j0jfs2kd4i1s0fksavvfv-home-manager-files/.config/wezterm/events/tab-rename.lua

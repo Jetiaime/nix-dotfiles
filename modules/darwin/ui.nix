@@ -3,7 +3,8 @@
   user,
   config,
   ...
-}: {
+}:
+{
   system.defaults = {
     # 自动更新
     SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;

@@ -1,16 +1,19 @@
 {
   pkgs,
   ...
-}: with pkgs;
-let 
+}:
+with pkgs;
+let
   shared = import ../shared/packages.nix { inherit pkgs; };
-in shared ++ [
+in
+shared
+++ [
   # C
-  colima      # Colima
+  colima # Colima
 
   # R
-  raycast     # App 启动器
+  raycast # App 启动器
 
   # W
-  wechat      # 微信
+  wechat # 微信
 ]
