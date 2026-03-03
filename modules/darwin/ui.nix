@@ -57,6 +57,7 @@
         "${config.users.users.${user}.home}/Applications/GoLand.app"
         "/Applications/Zen.app"
         "/Applications/Spotify.app"
+        "/Applications/NeteaseMusic.app"
         { spacer.small = true; }
       ];
 
