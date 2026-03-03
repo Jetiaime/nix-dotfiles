@@ -1,9 +1,6 @@
 {
-  lib,
   pkgs,
   user,
-  config,
-  home-manager,
   ...
 }:
 {
@@ -101,9 +98,14 @@
     casks = pkgs.callPackage ./casks.nix { };
     brews = pkgs.callPackage ./brews.nix { };
     onActivation = {
-      autoUpdate = true; # 每次 darwin-rebuild 时自动 brew update
-      upgrade = true; # 自动升级已安装的包
-      cleanup = "uninstall"; # 清理不在配置中的包（可选 "none", "uninstall", "zap"）
+      # 每次 darwin-rebuild 时自动 brew update
+      autoUpdate = true;
+
+      # 自动升级已安装的包
+      upgrade = true;
+
+      # 清理不在配置中的包（可选 "none", "uninstall", "zap"）
+      cleanup = "uninstall";
     };
   };
 }

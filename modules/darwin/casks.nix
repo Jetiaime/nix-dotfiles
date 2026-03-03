@@ -1,8 +1,4 @@
 _: [
-  # C
-  # "clash-verge-rev"    # Clash Verge Rev 网络代理工具
-  # "claude-code"        # Cluade Code
-
   # D
   "dingtalk" # 钉钉
 
