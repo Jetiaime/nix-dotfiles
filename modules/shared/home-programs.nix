@@ -4,16 +4,7 @@
   ...
 }:
 {
-  # Claude
-  opencode = {
-    enable = true;
-    settings = {
-      model = "anthropic/claude-sonnet-4-20250514";
-      autoshare = false;
-      autoupdate = true;
-    };
-  };
-
+  # Direnv 配置
   direnv = {
     enable = true;
     nix-direnv.enable = true;

@@ -74,13 +74,21 @@
             ".lima/kind-arm64.yaml".source =
               config.lib.file.mkOutOfStoreSymlink "/etc/nix-darwin/resources/lima/kind-arm64.yaml";
 
-            # OpenCode configuration is managed by home-manager module
+            # OpenCode 配置
+            ".config/opencode/opencode.json".source =
+              config.lib.file.mkOutOfStoreSymlink "/etc/nix-darwin/resources/opencode/opencode.json";
+
+            ".config/opencode/tui.json".source =
+              config.lib.file.mkOutOfStoreSymlink "/etc/nix-darwin/resources/opencode/tui.json";
+
+            # OhMyOpenCode 配置
+            ".config/opencode/oh-my-opencode.json".source =
+              config.lib.file.mkOutOfStoreSymlink "/etc/nix-darwin/resources/opencode/oh-my-opencode.json";
           };
         };
 
         # 合并对应的 programs
-        programs = 
-          (import ../shared/home-programs.nix { inherit user pkgs config; });
+        programs = (import ../shared/home-programs.nix { inherit user pkgs config; });
 
         xdg.configFile."Code/User/settings.json".text = ''
           {
