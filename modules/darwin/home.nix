@@ -87,24 +87,6 @@
           }
         '';
 
-        xdg.configFile."zed/settings.json" = {
-          text = ''
-            {
-              "languages": {
-                "Nix": {
-                  "language_servers": ["nil"]
-                }
-              },
-              "language_servers": {
-                "nil": {
-                  "path": "${pkgs.nil}/bin/nil"
-                }
-              }
-            }
-          '';
-          force = true;
-        };
-
         # 合并对应的 services
         services = { } // (import ../shared/home-services.nix { inherit user pkgs config; });
 
