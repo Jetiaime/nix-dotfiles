@@ -1,2 +1,8 @@
 .claude/
 result
+
+# Secrets — never commit these
+resources/openclaw/.aicodewith-api-key
+resources/openclaw/.gateway-token
+resources/openclaw/aicodewith-api-key
+resources/openclaw/gateway-token
