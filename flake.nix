@@ -75,6 +75,7 @@
               home-manager.darwinModules.home-manager
               nix-homebrew.darwinModules.nix-homebrew
               {
+                nixpkgs.overlays = [ inputs.nix-openclaw.overlays.default ];
                 nix-homebrew = {
                   inherit user;
                   enable = true;
@@ -102,6 +103,7 @@
               home-manager.darwinModules.home-manager
               nix-homebrew.darwinModules.nix-homebrew
               {
+                nixpkgs.overlays = [ inputs.nix-openclaw.overlays.default ];
                 nix-homebrew = {
                   inherit user;
                   enable = true;
