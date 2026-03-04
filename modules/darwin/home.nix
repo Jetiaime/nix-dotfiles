@@ -1,7 +1,6 @@
 {
   pkgs,
   user,
-  nix-openclaw,
   ...
 }:
 {
@@ -24,10 +23,6 @@
         ...
       }:
       {
-        # Note: nix-openclaw module has compatibility issues with current nixpkgs
-        # For now, we'll install openclaw-gateway via nix-env instead
-        # The module requires pkgs.openclaw which isn't in nixpkgs yet
-
         home = {
           enableNixpkgsReleaseCheck = false;
           packages = pkgs.callPackage ./packages.nix { } ++ [
@@ -84,6 +79,12 @@
             # OhMyOpenCode 配置
             ".config/opencode/oh-my-opencode.json".source =
               config.lib.file.mkOutOfStoreSymlink "/etc/nix-darwin/resources/opencode/oh-my-opencode.json";
+
+            # OpenCode Skills
+            ".config/opencode/skills" = {
+              source = config.lib.file.mkOutOfStoreSymlink "/etc/nix-darwin/resources/opencode/skills";
+              recursive = true;
+            };
           };
         };
 
@@ -111,6 +112,12 @@
   # homebrew 配置
   homebrew = {
     enable = true;
+    # 显式声明 taps，防止 nix-darwin 在 cleanup 阶段尝试 untap
+    # homebrew/cask 已有 cask 安装，untap 会失败
+    taps = [
+      "homebrew/cask"
+      "homebrew/core"
+    ];
     casks = pkgs.callPackage ./casks.nix { };
     brews = pkgs.callPackage ./brews.nix { };
     onActivation = {
