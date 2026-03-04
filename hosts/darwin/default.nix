@@ -11,6 +11,7 @@
     ../../modules/darwin/ui.nix
     ../../modules/darwin/home.nix
     ../../modules/darwin/launchd.nix
+    ../../modules/darwin/openclaw.nix
   ];
 
   # 系统软件包
