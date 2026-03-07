@@ -1,4 +1,7 @@
 _: [
+  # B
+  "baidunetdisk" # 百度网盘
+
   # D
   "dingtalk" # 钉钉
 
