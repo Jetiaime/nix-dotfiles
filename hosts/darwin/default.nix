@@ -26,6 +26,7 @@
       bun # Bun JS runtime
       opencode # OpenCode AI 终端编码助手
       nodejs_22 # NodeJS 22 for OpenClaw
+      claude-code # Claude AI 编程助手
     ];
 
     variables = {
