@@ -3,10 +3,7 @@
   "model": "anthropic/claude-sonnet-4-20250514",
   "small_model": "anthropic/claude-3-5-haiku-20241022",
   "autoupdate": true,
-  "plugin": [
-    "oh-my-opencode@latest",
-    "opencode-aicodewith-auth"
-  ],
+  "plugin": ["oh-my-opencode@latest", "opencode-aicodewith-auth"],
   "permission": {
     "bash": {
       "git *": "allow",
@@ -19,9 +16,7 @@
   "provider": {
     "aicodewith": {
       "name": "AICodewith",
-      "env": [
-        "AICODEWITH_API_KEY"
-      ],
+      "env": ["AICODEWITH_API_KEY"],
       "models": {
         "gpt-5.3-codex": {
           "name": "GPT-5.3 Codex",
@@ -30,13 +25,19 @@
             "output": 128000
           },
           "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-            "output": [
-              "text"
-            ]
+            "input": ["text", "image"],
+            "output": ["text"]
+          }
+        },
+        "gpt-5.4": {
+          "name": "GPT-5.4",
+          "limit": {
+            "context": 400000,
+            "output": 128000
+          },
+          "modalities": {
+            "input": ["text", "image"],
+            "output": ["text"]
           }
         },
         "gpt-5.2": {
@@ -46,13 +47,8 @@
             "output": 128000
           },
           "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-            "output": [
-              "text"
-            ]
+            "input": ["text", "image"],
+            "output": ["text"]
           }
         },
         "claude-opus-4-6-20260205": {
@@ -62,13 +58,8 @@
             "output": 64000
           },
           "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-            "output": [
-              "text"
-            ]
+            "input": ["text", "image"],
+            "output": ["text"]
           }
         },
         "claude-sonnet-4-6": {
@@ -78,13 +69,8 @@
             "output": 64000
           },
           "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-            "output": [
-              "text"
-            ]
+            "input": ["text", "image"],
+            "output": ["text"]
           }
         },
         "claude-haiku-4-5-20251001": {
@@ -94,29 +80,19 @@
             "output": 8192
           },
           "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-            "output": [
-              "text"
-            ]
+            "input": ["text", "image"],
+            "output": ["text"]
           }
         },
-        "gemini-3-pro": {
-          "name": "Gemini 3 Pro",
+        "gemini-3.1-pro-preview": {
+          "name": "Gemini 3.1 Pro Preview",
           "limit": {
             "context": 1048576,
             "output": 65536
           },
           "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-            "output": [
-              "text"
-            ]
+            "input": ["text", "image"],
+            "output": ["text"]
           }
         }
       },
@@ -132,14 +108,8 @@
             "output": 65535
           },
           "modalities": {
-            "input": [
-              "text",
-              "image",
-              "pdf"
-            ],
-            "output": [
-              "text"
-            ]
+            "input": ["text", "image", "pdf"],
+            "output": ["text"]
           },
           "variants": {
             "low": {
@@ -157,14 +127,8 @@
             "output": 65536
           },
           "modalities": {
-            "input": [
-              "text",
-              "image",
-              "pdf"
-            ],
-            "output": [
-              "text"
-            ]
+            "input": ["text", "image", "pdf"],
+            "output": ["text"]
           },
           "variants": {
             "minimal": {
@@ -188,14 +152,8 @@
             "output": 64000
           },
           "modalities": {
-            "input": [
-              "text",
-              "image",
-              "pdf"
-            ],
-            "output": [
-              "text"
-            ]
+            "input": ["text", "image", "pdf"],
+            "output": ["text"]
           }
         },
         "antigravity-claude-sonnet-4-6-thinking": {
@@ -205,14 +163,8 @@
             "output": 64000
           },
           "modalities": {
-            "input": [
-              "text",
-              "image",
-              "pdf"
-            ],
-            "output": [
-              "text"
-            ]
+            "input": ["text", "image", "pdf"],
+            "output": ["text"]
           },
           "variants": {
             "low": {
@@ -234,14 +186,8 @@
             "output": 64000
           },
           "modalities": {
-            "input": [
-              "text",
-              "image",
-              "pdf"
-            ],
-            "output": [
-              "text"
-            ]
+            "input": ["text", "image", "pdf"],
+            "output": ["text"]
           },
           "variants": {
             "low": {
