@@ -5,6 +5,9 @@ _: [
   # D
   "dingtalk" # 钉钉
 
+  # F
+  "feishu" # 飞书
+
   # N
   "neteasemusic" # 网易云
 
