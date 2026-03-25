@@ -27,6 +27,12 @@
       opencode # OpenCode AI 终端编码助手
       nodejs_22 # NodeJS 22 for OpenClaw
       claude-code # Claude AI 编程助手
+
+      # Go 开发环境
+      go_1_25 # Go 1.25 最新稳定版
+      gopls # Go 语言服务器 (Zed 必需)
+      delve # Go 调试器
+      golangci-lint # Go 代码检查工具
     ];
 
     variables = {
@@ -40,6 +46,9 @@
       HOMEBREW_BOTTLE_DOMAIN = "https://mirrors.ustc.edu.cn/homebrew-bottles";
       HOMEBREW_BREW_GIT_REMOTE = "https://mirrors.ustc.edu.cn/brew.git";
       HOMEBREW_CORE_GIT_REMOTE = "https://mirrors.ustc.edu.cn/homebrew-core.git";
+      # Go Module 代理配置
+      GOPROXY = "https://goproxy.cn,direct";
+      GOPRIVATE = "";
     };
   };
 

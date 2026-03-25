@@ -1,0 +1,47 @@
+name: Nix Flake Check
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  flake-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: cachix/install-nix-action@v27
+        with:
+          install-linux-binary: true
+          install-url: https://nixos.org/nix/install-linux
+
+      - uses: cachix/install-nix-action@v27
+        with:
+          install-url: https://nixos.org/nix/install-linux
+
+      - name: Check flake schema
+        run: nix flake metadata --github-archive
+
+      - name: Check flake evaluates
+        run: nix flake show --allow-import-from-derivation
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: cachix/install-nix-action@v27
+        with:
+          install-url: https://nixos.org/nix/install-linux
+
+      - name: Run nixfmt
+        run: nixfmt --check .
+
+      - name: Run deadnix
+        run: |
+          nix run github:bennofs/deadnix -- no-deadnix .
+
+      - name: Run statix
+        run: |
+          nix run github:nerdypepper/statix -- check --fix .

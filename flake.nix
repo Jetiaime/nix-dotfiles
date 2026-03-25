@@ -16,9 +16,6 @@
 
     home-manager.url = "github:nix-community/home-manager/master";
 
-    # 添加 flake-utils 简化多系统支持
-    flake-utils.url = "github:numtide/flake-utils";
-
     ###################################################
     #               External Tool Inputs              #
     ###################################################
@@ -53,72 +50,45 @@
       nix-homebrew,
       homebrew-core,
       homebrew-cask,
-      flake-utils,
       ...
     }:
     let
       user = "liu";
-      darwinSystems = [ "aarch64-darwin" ];
+      # Common configuration for all darwin systems
+      darwinSystemModule = {
+        imports = [
+          home-manager.darwinModules.home-manager
+          nix-homebrew.darwinModules.nix-homebrew
+          {
+            nixpkgs.overlays = [ inputs.nix-openclaw.overlays.default ];
+            nix-homebrew = {
+              inherit user;
+              enable = true;
+              enableRosetta = true;
+              taps = {
+                "homebrew/homebrew-core" = homebrew-core;
+                "homebrew/homebrew-cask" = homebrew-cask;
+              };
+              mutableTaps = false;
+              autoMigrate = true;
+            };
+          }
+          ./hosts/darwin
+        ];
+      };
+      mkDarwinSystem = system:
+        darwin.lib.darwinSystem {
+          inherit system;
+          specialArgs = inputs // {
+            inherit user;
+            inherit (inputs) nix-openclaw;
+          };
+        } // darwinSystemModule;
     in
     {
-      # Darwin 系统配置
-      darwinConfigurations =
-        nixpkgs.lib.genAttrs darwinSystems (
-          system:
-          darwin.lib.darwinSystem {
-            inherit system;
-            specialArgs = inputs // {
-              inherit user;
-              inherit (inputs) nix-openclaw;
-            };
-            modules = [
-              home-manager.darwinModules.home-manager
-              nix-homebrew.darwinModules.nix-homebrew
-              {
-                nixpkgs.overlays = [ inputs.nix-openclaw.overlays.default ];
-                nix-homebrew = {
-                  inherit user;
-                  enable = true;
-                  enableRosetta = true;
-                  taps = {
-                    "homebrew/homebrew-core" = homebrew-core;
-                    "homebrew/homebrew-cask" = homebrew-cask;
-                  };
-                  mutableTaps = false;
-                  autoMigrate = true;
-                };
-              }
-              ./hosts/darwin
-            ];
-          }
-        )
-        // {
-          "Blaze" = darwin.lib.darwinSystem {
-            system = "aarch64-darwin";
-            specialArgs = inputs // {
-              inherit user;
-              inherit (inputs) nix-openclaw;
-            };
-            modules = [
-              home-manager.darwinModules.home-manager
-              nix-homebrew.darwinModules.nix-homebrew
-              {
-                nixpkgs.overlays = [ inputs.nix-openclaw.overlays.default ];
-                nix-homebrew = {
-                  inherit user;
-                  enable = true;
-                  enableRosetta = true;
-                  taps = {
-                    "homebrew/homebrew-core" = homebrew-core;
-                    "homebrew/homebrew-cask" = homebrew-cask;
-                  };
-                  mutableTaps = false;
-                  autoMigrate = true;
-                };
-              }
-              ./hosts/darwin
-            ];
-          };
-        };
+      # Darwin 系统配置 - consolidated
+      darwinConfigurations = {
+        "Blaze" = mkDarwinSystem "aarch64-darwin";
+      };
     };
 }

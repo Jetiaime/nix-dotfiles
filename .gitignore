@@ -4,5 +4,7 @@ result
 # Secrets — never commit these
 resources/openclaw/.aicodewith-api-key
 resources/openclaw/.gateway-token
+resources/openclaw/.dingtalk-client-id
+resources/openclaw/.dingtalk-client-secret
 resources/openclaw/aicodewith-api-key
 resources/openclaw/gateway-token

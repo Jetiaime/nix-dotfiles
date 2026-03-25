@@ -10,10 +10,6 @@ let
   # so they don't need to be tracked by git or copied into the Nix store.
   secretsDir = "/etc/nix-darwin/resources/openclaw";
 
-  # Static config values (no secrets) — embedded at eval time
-  dingtalkClientId     = "dinguyfdhhfkwzabs0jv";
-  dingtalkClientSecret = "LiHxMPYOaU8vlbonFxgvZSjuSOJZi7az8P8lWCrTMUxd4pJfy_HFIpt2Ifx0g2ZG";
-
   # Model lists (no secrets) — embedded at eval time
   claudeModels = [
     { id = "claude-opus-4-6-20260205"; name = "Claude Opus 4.6";   contextWindow = 200000; maxTokens = 64000; reasoning = false; input = [ "text" "image" ]; cost = { input = 0; output = 0; cacheRead = 0; cacheWrite = 0; }; }
@@ -29,13 +25,13 @@ let
     { id = "gemini-3-pro"; name = "Gemini 3 Pro"; contextWindow = 1048576; maxTokens = 65536; reasoning = false; input = [ "text" "image" ]; cost = { input = 0; output = 0; cacheRead = 0; cacheWrite = 0; }; }
   ];
 
-  # Static part of the extra-config patch (no secrets). The secrets (apiKey, gatewayToken)
+  # Static part of the extra-config patch (no secrets). All secrets
   # are substituted at activation time via shell variable expansion.
   extraConfigTemplate = builtins.toJSON {
     channels."dingtalk-connector" = {
       enabled = true;
-      clientId = dingtalkClientId;
-      clientSecret = dingtalkClientSecret;
+      clientId = "__DINGTALK_CLIENT_ID__";
+      clientSecret = "__DINGTALK_CLIENT_SECRET__";
       gatewayToken = "__GATEWAY_TOKEN__";
     };
     auth.order = {
@@ -145,11 +141,15 @@ in
 
         _gatewayToken="$(${pkgs.coreutils}/bin/cat "$_secretsDir/.gateway-token" | ${pkgs.gnused}/bin/sed 's/[[:space:]]*$//')"
         _apiKey="$(${pkgs.coreutils}/bin/cat "$_secretsDir/.aicodewith-api-key" | ${pkgs.gnused}/bin/sed 's/[[:space:]]*$//')"
+        _dingtalkClientId="$(${pkgs.coreutils}/bin/cat "$_secretsDir/.dingtalk-client-id" | ${pkgs.gnused}/bin/sed 's/[[:space:]]*$//')"
+        _dingtalkClientSecret="$(${pkgs.coreutils}/bin/cat "$_secretsDir/.dingtalk-client-secret" | ${pkgs.gnused}/bin/sed 's/[[:space:]]*$//')"
 
         # Substitute placeholders in the template
         _patch="$(printf '%s' '${extraConfigTemplate}' \
           | ${pkgs.gnused}/bin/sed "s|__GATEWAY_TOKEN__|$_gatewayToken|g" \
-          | ${pkgs.gnused}/bin/sed "s|__AICODEWITH_API_KEY__|$_apiKey|g")"
+          | ${pkgs.gnused}/bin/sed "s|__AICODEWITH_API_KEY__|$_apiKey|g" \
+          | ${pkgs.gnused}/bin/sed "s|__DINGTALK_CLIENT_ID__|$_dingtalkClientId|g" \
+          | ${pkgs.gnused}/bin/sed "s|__DINGTALK_CLIENT_SECRET__|$_dingtalkClientSecret|g")"
 
         if [ -f "$_ocConfig" ]; then
           _merged="$(${pkgs.jq}/bin/jq -s '.[0] * .[1]' "$_ocConfig" - <<< "$_patch")"
